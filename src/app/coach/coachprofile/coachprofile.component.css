@@ -1,0 +1,29 @@
+.coach {
+    background: black;
+    width: 450px;
+    margin: 20px;
+    border-radius: 10px;
+    height: auto;
+    min-height: 200px;
+    text-align: center;  
+}
+p { margin:0 }
+.flex-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .flex-container > div {
+    margin: 10px;
+    padding: 20px;
+    display:flex;
+    align-items: center;
+    text-align: left;
+    margin-left: 10px;
+  }
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}

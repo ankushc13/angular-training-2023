@@ -1,0 +1,17 @@
+<div class="row itemsBlock" *ngIf="schedulesDetail.length>0">
+    <div *ngFor="let item of schedulesDetail" class="col-md-4 col-sm-6 col-12" style="float:none;margin:auto;">
+        <div class="coach">
+            <h4 style="color: white;">Appointment Date:</h4>
+            <h4 style="color: white;">{{item.appointmentDate}}</h4>
+            <h5 style="color: white; ">Slot: {{item.slot}}</h5>
+            <span style="color: white; ">Booking Id: {{item.id}}</span><br>
+            <span style="color: white; ">User Id: {{item.userId}}</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="schedulesDetail.length==0" style="text-align: center; margin-top: 20px;">
+    <div>
+        <img src={{CONSTANT.notepadImg}}>
+        <h4>{{CONSTANT.noSchedules}}</h4>
+    </div>
+</div>

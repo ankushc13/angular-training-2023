@@ -1,0 +1,17 @@
+<div class="flex-container">
+    <div class="coach">
+        <div class="image" *ngIf="userDetail.gender==='F'"><img src="../../../assets/Images/female.png"></div>
+        <div class="image" *ngIf="userDetail.gender==='M'"><img src="../../../assets/Images/male.png"></div>
+        <div class="detail">
+            <div class="item1">
+                <h4 style="color: white;">{{userDetail.name}}</h4>
+                <h4 style="color: white;">Coach Id: {{userDetail.id}}</h4>
+            </div>
+            <div class="item2">
+                <p style="color: white;">Date Of Birth: {{userDetail.dateOfBirth | date: 'MM/dd/yyyy'}}</p>
+                <p style="color: white;">Mobile Number: {{userDetail.mobileNumber}}</p>
+                <p style="color: white;">Speciality: {{userDetail.speciality}}</p>
+            </div>
+        </div>
+    </div>
+</div>

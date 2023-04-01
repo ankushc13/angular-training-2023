@@ -1,0 +1,22 @@
+<div class="flex-container">
+    <div class="user">
+        <div class="image" *ngIf="userDetail.gender==='F'"><img src="../../../assets/Images/female.png"></div>
+        <div class="image" *ngIf="userDetail.gender==='M'"><img src="../../../assets/Images/male.png"></div>
+        <div class="detail">
+            <div class="item1">
+                <h4 style="color: white;">{{userDetail.name}}</h4>
+            </div>
+            <div class="item2">
+                <p style="color: white;">Date Of Birth: {{userDetail.dateOfBirth  | date: 'MM/dd/yyyy'}}</p>
+                <p style="color: white;">Email Id: {{userDetail.email}}</p>
+                <p style="color: white;">Mobile Number: {{userDetail.mobileNumber}}</p>
+                <p style="color: white;">Address: {{userDetail.city}} {{userDetail.state}} {{userDetail.country}}</p>
+                <p style="color: white;">Pincode: {{userDetail.pincode}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align: center;">
+    <a [routerLink]="['../home']"><button  class="btn button"><span>Back</span></button></a>
+
+ </div>

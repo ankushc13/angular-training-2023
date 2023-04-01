@@ -1,0 +1,86 @@
+<div class="row itemsBlock" *ngIf="appoints.length>0&&!reschedule&&!success">
+    <div *ngFor="let item of appoints" class="col-md-4 col-sm-6 col-12" style="float:none;margin:auto;">
+        <div class="user">
+            <h4 style="color: white;">Appointment Date:</h4>
+            <h4 style="color: white;">{{item.appointmentDate}}</h4>
+            <h5 style="color: white; ">Slot: {{item.slot}}</h5>
+            <span style="color: white; ">Booking Id: {{item.id}}</span><br>
+            <span style="color: white; ">User Id: {{item.userId}}</span><br>
+            <span style="color: white; ">Coach Id: {{item.coachId}}</span>
+            <button type="button" style="margin-top: 20px;" class="btn button"
+                (click)="onClick(item.id)"><span>Reschedule an Appointment</span></button>
+            <button type="button" style="margin-top: 20px;" class="btn button cancel"
+                (click)="popup=true;bookId=item.id"><span>Cancel Appointment</span></button>
+        </div>
+    </div>
+</div>
+<div class="overlay" *ngIf="popup">
+    <div class="popup">
+        <h4>{{CONSTANT.cancelConfirm}}</h4>
+        <div class="row" style="text-align: center;">
+            <div class="col-sm-6">
+                <button type="button" style="margin-right: 200px;width: 150px;"
+                    class="btn button" (click)="popup=false;cancelSchedule()"><span>Yes</span></button>
+            </div>
+            <div class="col-sm-6">
+                <button type="button" style="width: 150px;" class="btn button cancel"
+                    (click)="popup=false"><span>No</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex-container" *ngIf="reschedule&&!success">
+    <div class="appoint">
+        <h3 style="text-align: center;">Reschedule your appointment</h3>
+        <form [formGroup]="bookForm">
+            <div class="row">
+                <div class="form-group">
+                    <label>Appointment Date: </label>
+                    <input id="appointmentDate" class="form-control" type="date" formControlName="appointmentDate">
+                    <p *ngIf="bookForm.controls['appointmentDate'].errors?.['invalid']" style="color: red;">
+                        {{CONSTANT.appointmentDateError}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Prefered Slot: </label>
+                    <div class="radio">
+                        <input type="radio" name="slot" class="form-control" formControlName="slot"
+                            value="9 AM to 10 AM" style="width: 20px;">
+                        <span style="margin-right: 30px;">9 AM to 10 AM </span>
+                        <input type="radio" name="slot" class="form-control" formControlName="slot"
+                            value="10 AM to 11 AM " style="width: 20px;">
+                        <span style="margin-right: 30px;">10 AM to 11 AM </span>
+                        <input type="radio" name="slot" class="form-control" formControlName="slot"
+                            value="11 AM to 12 PM" style="width: 20px;">
+                        <span style="margin-right: 30px;">11 AM to 12 PM </span>
+                        <input type="radio" name="slot" class="form-control" formControlName="slot" value="2 PM to 3 PM"
+                            style="width: 20px;">
+                        <span style="margin-right: 30px;">2 PM to 3 PM </span>
+                        <input type="radio" name="slot" class="form-control" formControlName="slot" value="3 PM to 4 PM"
+                            style="width: 20px;">
+                        <span style="margin-right: 30px;">3 PM to 4 PM </span>
+                        <input type="radio" name="slot" class="form-control" formControlName="slot"
+                            value="4 PM to 5 PM " style="width: 20px;">
+                        <span style="margin-right: 30px;">4 PM to 5 PM </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div style="text-align:center;">
+            <button type="button" class="btn button" (click)="confirmReschedule()"><span>Reschedule your
+                Appointment</span></button>
+        </div>
+    </div>
+</div>
+<div class="flex-container" *ngIf="success" style="text-align: center; margin-top: 20px;">
+    <div class="coach" style="background-color: black;">
+        <h4 style="color: white;">Your appointment is scheduled successfully</h4>
+        <button class="btn button" (click)="success=false;reschedule=false"><span>Go back</span></button>
+    </div>
+</div>
+<div *ngIf="appoints.length==0&&!success" style="text-align: center; margin-top: 20px;">
+    <div>
+        <img src={{CONSTANT.notepadImg}}>
+        <h4>{{CONSTANT.noAppointments}}</h4>
+        <a [routerLink]="['../home']"><button class="btn button"><span>Back</span></button></a>
+    </div>
+</div>

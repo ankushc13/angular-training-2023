@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="coach" *ngIf="role==='coaches'">
+        <div class="items">
+        <img src="../../assets/Images/LifeCoachLogIn.jpg" width="100" height="100">
+        <form [formGroup]="coachForm">
+            <div class="form-group">
+                <input id="id" placeholder="Coach Id" class="form-control" type="text" formControlName="id">
+                <p *ngIf="(coachForm.controls['id'].dirty||coachForm.controls['id'].touched)&&coachForm.controls['id'].errors"style="color: red;">{{CONSTANT.fieldRequired}}</p>
+            </div>
+            <div class="form-group">
+                <input id="password" placeholder="Password" class="form-control" type="password" formControlName="password">
+                <p *ngIf="(coachForm.controls['password'].dirty||coachForm.controls['password'].touched)&&coachForm.controls['password'].errors"style="color: red;">{{CONSTANT.passwordError}}</p>
+            </div>
+        </form>
+        <button type="button" style="margin-left: 25px;" class="btn button" (click)="coachLogin()"><span>Login as a Coach</span></button>
+        <p *ngIf="fail" style="color: red;">{{CONSTANT.invalid}}</p>
+    </div>
+    </div>
+    <div class="user" *ngIf="role==='users'">
+        <div class="items">
+        <img src="../../assets/Images/UserLogIn.jpg" width="100" height="100">
+        <form [formGroup]="userForm">
+            <div class="form-group">
+                <input id="id" placeholder="User Id" class="form-control" type="text" formControlName="id">
+                <p *ngIf="(userForm.controls['id'].dirty||userForm.controls['id'].touched)&&userForm.controls['id'].errors"style="color: red;">{{CONSTANT.fieldRequired}}</p>
+            </div>
+            <div class="form-group">
+                <input id="password" placeholder="Password" class="form-control" type="password" formControlName="password">
+                <p *ngIf="(userForm.controls['password'].dirty||userForm.controls['password'].touched)&&userForm.controls['password'].errors"style="color: red;">{{CONSTANT.passwordError}}</p>
+            </div>
+        </form>
+       <button type="button" style="margin-left: 25px;" class="btn button" (click)="userLogin()"><span>Login as a User</span></button>
+       <p *ngIf="fail" style="color: red;">{{CONSTANT.invalid}}</p>
+    </div>
+    </div>
+</div>
