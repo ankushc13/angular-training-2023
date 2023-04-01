@@ -1,1 +1,1 @@
-# angular-training-2023
+# wecare angular project
